@@ -1,0 +1,536 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sala de Cine Online K-16 - Películas y series en streaming">
+<title>Sala de Cine | Canal K-16</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --red:#ff2020;
+  --pink:#ff00cc;
+  --cyan:#00ffff;
+  --gold:#ffd700;
+  --dark:#080808;
+  --card:#111;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:var(--dark);
+  color:#fff;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:repeating-linear-gradient(
+    to bottom,transparent,transparent 2px,
+    rgba(0,0,0,.12) 2px,rgba(0,0,0,.12) 4px
+  );
+  pointer-events:none;
+  z-index:9999;
+}
+
+/* ── HEADER ── */
+header{
+  background:linear-gradient(135deg,#1a0000,#0a0000,#1a0000);
+  border-bottom:2px solid var(--red);
+  padding:10px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+  position:sticky;
+  top:0;
+  z-index:200;
+  box-shadow:0 4px 30px rgba(255,32,32,.4);
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  color:#fff;
+}
+
+.logo img{
+  height:44px;
+  border-radius:8px;
+  box-shadow:0 0 10px var(--red);
+}
+
+.logo-text{display:flex;flex-direction:column;line-height:1.2}
+
+.logo-title{
+  font-size:17px;
+  font-weight:bold;
+  background:linear-gradient(90deg,var(--red),var(--gold));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.logo-sub{font-size:10px;color:#888;letter-spacing:2px;text-transform:uppercase}
+
+nav{display:flex;align-items:center;gap:4px}
+
+nav a{
+  color:#ccc;
+  text-decoration:none;
+  padding:6px 12px;
+  border-radius:18px;
+  font-size:13px;
+  font-weight:bold;
+  border:1px solid transparent;
+  transition:.3s;
+  white-space:nowrap;
+}
+
+nav a:hover{
+  color:#fff;
+  border-color:var(--red);
+  box-shadow:0 0 10px rgba(255,32,32,.4);
+  background:rgba(255,32,32,.1);
+}
+
+nav a.active{
+  color:var(--red);
+  border-color:var(--red);
+  background:rgba(255,32,32,.12);
+}
+
+.menu-toggle{
+  display:none;
+  background:none;
+  border:2px solid var(--red);
+  color:var(--red);
+  font-size:20px;
+  padding:4px 10px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* ── CONTENEDOR ── */
+.container{
+  width:95%;
+  max-width:1200px;
+  margin:0 auto;
+  padding:24px 0;
+}
+
+/* ── HERO TITLE ── */
+.hero{
+  text-align:center;
+  padding:20px 20px 0;
+}
+
+.hero h1{
+  font-size:clamp(20px,4vw,36px);
+  background:linear-gradient(90deg,var(--red),var(--gold),var(--red));
+  background-size:200%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer 3s linear infinite;
+  letter-spacing:1px;
+  margin-bottom:6px;
+}
+
+@keyframes shimmer{
+  0%{background-position:0%}
+  100%{background-position:200%}
+}
+
+.hero p{color:#666;font-size:14px}
+
+/* ── SEPARADOR ── */
+.sep{
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--red),transparent);
+  margin:20px 0;
+  box-shadow:0 0 8px rgba(255,32,32,.3);
+}
+
+/* ── PLAYER WRAPPER ── */
+.player-wrap{
+  background:linear-gradient(145deg,#110000,#0d0000);
+  border:1px solid rgba(255,32,32,.25);
+  border-radius:18px;
+  padding:16px;
+  margin-bottom:28px;
+  box-shadow:0 10px 50px rgba(0,0,0,.7);
+  position:relative;
+}
+
+.player-label{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.player-label-text{
+  font-size:15px;
+  font-weight:bold;
+  color:#ddd;
+}
+
+.player-label-sub{
+  font-size:11px;
+  color:#666;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+/* ── VIDEO CONTAINER ── */
+.video-container{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  background:#000;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.main-player .video-container{
+  box-shadow:0 0 50px rgba(255,32,32,.25);
+  border:1px solid rgba(255,32,32,.15);
+}
+
+.second-player .video-container{
+  box-shadow:0 0 25px rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.video-container iframe,
+.video-container video{
+  width:100%;
+  height:100%;
+  border:none;
+  display:block;
+}
+
+/* ── LOGO OVERLAY ── */
+.v-logo{
+  position:absolute;
+  top:12px;
+  left:12px;
+  width:64px;
+  z-index:10;
+  pointer-events:none;
+}
+
+.v-logo img{
+  width:100%;
+  border-radius:6px;
+  box-shadow:0 0 12px rgba(0,0,0,.8);
+  opacity:.85;
+}
+
+/* ── RELOJ ── */
+.clock{
+  position:absolute;
+  top:12px;
+  right:12px;
+  padding:5px 12px;
+  background:rgba(0,0,0,.55);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  border-radius:8px;
+  font-size:15px;
+  font-weight:bold;
+  letter-spacing:2px;
+  z-index:10;
+  color:#00ffcc;
+  border:1px solid rgba(0,255,200,.2);
+  box-shadow:0 0 12px rgba(0,255,200,.3);
+  font-variant-numeric:tabular-nums;
+}
+
+/* ── BOTÓN FULLSCREEN ── */
+.fullscreen-btn{
+  position:absolute;
+  bottom:12px;
+  right:12px;
+  padding:6px 10px;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(4px);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:8px;
+  cursor:pointer;
+  font-size:16px;
+  z-index:10;
+  transition:.2s;
+}
+
+.fullscreen-btn:hover{
+  background:rgba(255,32,32,.4);
+  border-color:var(--red);
+  box-shadow:0 0 10px rgba(255,32,32,.4);
+}
+
+/* ── GRID DOS PLAYERS ── */
+.players-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+@media(max-width:800px){
+  .players-grid{grid-template-columns:1fr}
+}
+
+/* ── INFO ── */
+.info-bar{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:14px;
+  padding:10px 0 0;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+
+.info-dot{
+  width:8px;height:8px;
+  background:var(--red);
+  border-radius:50%;
+  box-shadow:0 0 6px var(--red);
+  animation:blink 1.5s infinite;
+  flex-shrink:0;
+}
+
+@keyframes blink{
+  0%,100%{opacity:1}50%{opacity:.3}
+}
+
+.info-text{font-size:13px;color:#aaa}
+
+/* ── STATS ── */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:12px;
+  margin:28px 0 20px;
+}
+
+.stat-card{
+  background:linear-gradient(145deg,#110000,#0a0000);
+  border:1px solid rgba(255,32,32,.2);
+  border-radius:12px;
+  padding:16px;
+  text-align:center;
+}
+
+.stat-num{
+  font-size:26px;
+  font-weight:bold;
+  color:var(--red);
+  text-shadow:0 0 12px rgba(255,32,32,.5);
+  display:block;
+}
+
+.stat-label{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+
+/* ── FOOTER ── */
+footer{
+  background:linear-gradient(135deg,#0d0000,#0a0000);
+  border-top:1px solid rgba(255,32,32,.2);
+  padding:24px 20px;
+  text-align:center;
+  margin-top:20px;
+}
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:10px;
+}
+
+.footer-links a{
+  color:#555;
+  text-decoration:none;
+  font-size:13px;
+  transition:.3s;
+}
+
+.footer-links a:hover{color:var(--red)}
+
+.footer-copy{color:#333;font-size:12px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .menu-toggle{display:block}
+  nav{
+    width:100%;
+    display:none;
+    flex-direction:column;
+    background:rgba(8,0,0,.97);
+    border:1px solid rgba(255,32,32,.25);
+    border-radius:12px;
+    padding:8px;
+    margin-top:6px;
+  }
+  nav.open{display:flex}
+  nav a{text-align:center;border-radius:8px}
+  .clock{font-size:12px;padding:4px 8px}
+  .v-logo{width:46px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <a href="index.html" class="logo">
+    <img src="https://i.postimg.cc/rmb2mbCk/Logo-Canal-1.png" alt="Logo Canal K-16">
+    <div class="logo-text">
+      <span class="logo-title">Canal K-16</span>
+      <span class="logo-sub">Sala de Cine</span>
+    </div>
+  </a>
+
+  <button class="menu-toggle" onclick="toggleMenu()">&#9776;</button>
+
+  <nav id="menu">
+    <a href="index.html">Inicio</a>
+    <a href="Canales.html">📺 TV en Vivo</a>
+    <a href="cine.html" class="active">🎬 Cine</a>
+    <a href="https://radio-k-16.es.tl/" target="_blank" rel="noopener">📻 Radio</a>
+  </nav>
+</header>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <h1>🎬 SALA DE CINE ONLINE K-16</h1>
+  <p>Películas, series y contenido en vivo · 24/7</p>
+</div>
+
+<div class="container">
+  <div class="sep"></div>
+
+  <!-- ── STATS ── -->
+  <div class="stats">
+    <div class="stat-card">
+      <span class="stat-num">24/7</span>
+      <div class="stat-label">Transmisión</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">HD</span>
+      <div class="stat-label">Calidad</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">2</span>
+      <div class="stat-label">Pantallas</div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">∞</span>
+      <div class="stat-label">Contenido</div>
+    </div>
+  </div>
+
+  <!-- ── PANTALLAS ── -->
+  <div class="players-grid">
+
+    <!-- PANTALLA 1 -->
+    <div class="player-wrap main-player">
+      <div class="player-label">
+        <div>
+          <div class="player-label-text">🎬 Pantalla Principal</div>
+          <div class="player-label-sub">Cine en vivo · Canal K-16</div>
+        </div>
+      </div>
+      <div class="video-container" id="player1">
+        <iframe src="https://ok.ru/videoembed/13335173139006?nochat=1" allowfullscreen loading="lazy" title="Cine K-16 Principal"></iframe>
+        <div class="v-logo">
+          <img src="https://i.postimg.cc/rmb2mbCk/Logo-Canal-1.png" alt="K-16">
+        </div>
+        <div class="clock" id="clock1"></div>
+        <button class="fullscreen-btn" onclick="toggleFullscreen('player1')" title="Pantalla completa">⛶</button>
+      </div>
+      <div class="info-bar">
+        <div class="info-dot"></div>
+        <div class="info-text">Transmisión en vivo · Pantalla Principal</div>
+      </div>
+    </div>
+
+    <!-- PANTALLA 2 -->
+    <div class="player-wrap second-player">
+      <div class="player-label">
+        <div>
+          <div class="player-label-text">👨‍👩‍👧 Cine Familiar</div>
+          <div class="player-label-sub">Películas · Series · Cortos</div>
+        </div>
+      </div>
+      <div class="video-container" id="player2">
+        <iframe src="https://ok.ru/videoembed/9389137332859?nochat=1" allowfullscreen loading="lazy" title="Cine Familiar K-16"></iframe>
+        <div class="v-logo">
+          <img src="https://i.postimg.cc/rmb2mbCk/Logo-Canal-1.png" alt="K-16">
+        </div>
+        <div class="clock" id="clock2"></div>
+        <button class="fullscreen-btn" onclick="toggleFullscreen('player2')" title="Pantalla completa">⛶</button>
+      </div>
+      <div class="info-bar">
+        <div class="info-dot"></div>
+        <div class="info-text">Películas, series y cortos · Cine Familiar</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Inicio</a>
+    <a href="Canales.html">TV en Vivo</a>
+    <a href="cine.html">Cine</a>
+    <a href="https://radio-k-16.es.tl/" target="_blank" rel="noopener">Radio K-16</a>
+    <a href="https://canalk16limavida.wixsite.com/my-site" target="_blank" rel="noopener">Plataforma K-16</a>
+  </div>
+  <p class="footer-copy">© 2026 RETRO TV 80s · Canal K-16 · Sala de Cine Online</p>
+</footer>
+
+<script>
+// ── MENÚ ──
+function toggleMenu(){
+  document.getElementById('menu').classList.toggle('open');
+}
+
+// ── FULLSCREEN ──
+function toggleFullscreen(id){
+  const el = document.getElementById(id);
+  if(!document.fullscreenElement){
+    el.requestFullscreen && el.requestFullscreen();
+  } else {
+    document.exitFullscreen && document.exitFullscreen();
+  }
+}
+
+// ── RELOJ ──
+function updateClock(){
+  const now  = new Date();
+  const hora = now.toLocaleTimeString('es-CL',{
+    hour:'2-digit', minute:'2-digit', second:'2-digit'
+  });
+  document.getElementById('clock1').textContent = hora;
+  document.getElementById('clock2').textContent = hora;
+}
+setInterval(updateClock, 1000);
+updateClock();
+</script>
+
+</body>
+</html>
