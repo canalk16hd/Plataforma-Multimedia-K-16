@@ -513,7 +513,7 @@ function toggleFullscreen(id){
 function updateClock(){
   const now  = new Date();
   const hora = now.toLocaleTimeString('es-CL',{
-    hour:'2-digit', minute:'2-digit', second:'2-digit'
+    hour:'2-digit', minute:'2-digit'
   });
   document.getElementById('clock1').textContent = hora;
   document.getElementById('clock2').textContent = hora;
