@@ -3,11 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Plataforma Multimedia Canal<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Plataforma Multimedia Canal K-16 - TV, Cine y Videos Retro 80s">
 <title>RETRO TV 80s | Canal K-16</title>
 
@@ -82,6 +77,8 @@ text-transform:uppercase;
 nav{
 display:flex;
 gap:6px;
+align-items:center;
+flex-wrap:wrap;
 }
 
 nav a{
@@ -106,6 +103,49 @@ color:var(--pink);
 font-size:22px;
 padding:4px 10px;
 border-radius:8px;
+cursor:pointer;
+}
+
+/* MINI RADIO */
+.mini-radio{
+display:flex;
+align-items:center;
+gap:8px;
+padding:6px 10px;
+border-radius:50px;
+background:rgba(0,0,0,.35);
+border:1px solid rgba(255,0,204,.4);
+backdrop-filter:blur(8px);
+margin-left:10px;
+}
+
+.radio-mini-logo{
+width:30px;
+height:30px;
+border-radius:50%;
+box-shadow:0 0 10px var(--pink);
+}
+
+.mini-live{
+font-size:10px;
+color:#ff3355;
+font-weight:bold;
+}
+
+.mini-radio button{
+width:32px;
+height:32px;
+border:none;
+border-radius:50%;
+background:linear-gradient(135deg,var(--pink),var(--blue));
+color:#fff;
+font-size:14px;
+cursor:pointer;
+}
+
+.mini-radio input[type=range]{
+width:70px;
+accent-color:#ff00cc;
 cursor:pointer;
 }
 
@@ -356,6 +396,12 @@ nav{display:none;width:100%;flex-direction:column}
 nav.open{display:flex}
 .slider{height:55vw;min-height:220px}
 .quick-links{grid-template-columns:1fr 1fr}
+
+.mini-radio{
+width:100%;
+justify-content:center;
+margin-top:10px;
+}
 }
 
 @media(max-width:480px){
@@ -384,6 +430,31 @@ nav.open{display:flex}
 <a href="cine.html">🎬 Películas</a>
 <a href="https://radio-k-16.es.tl/" target="_blank">📻 Radio K-16</a>
 <a href="Canales.html">📺 TV en Vivo</a>
+
+<!-- REPRODUCTOR RADIO -->
+<div class="mini-radio">
+
+<img src="https://i.postimg.cc/MpDP7ck7/e93c6cdb1ad95aaed45c286435cd75ef.png" class="radio-mini-logo">
+
+<span class="mini-live">● LIVE</span>
+
+<button id="radioPlay">▶</button>
+
+<input
+type="range"
+id="radioVolume"
+min="0"
+max="1"
+step="0.01"
+value="0.8"
+>
+
+<audio id="retroRadio">
+<source src="https://node-04.zeno.fm/b8sutcm0vwzuv?rj-ttl=5&rj-tok=AAABeiUvIgsAYeKj6-N9rMqq1A" type="audio/mpeg">
+</audio>
+
+</div>
+
 </nav>
 </header>
 
@@ -525,6 +596,29 @@ document.querySelectorAll('.clock').forEach(el=>el.textContent=txt);
 
 setInterval(updateClock,1000);
 updateClock();
+
+/* RADIO RETRO */
+const radio=document.getElementById("retroRadio");
+const playBtn=document.getElementById("radioPlay");
+const volumeControl=document.getElementById("radioVolume");
+
+radio.volume=0.8;
+
+playBtn.addEventListener("click",()=>{
+
+if(radio.paused){
+radio.play();
+playBtn.innerHTML="❚❚";
+}else{
+radio.pause();
+playBtn.innerHTML="▶";
+}
+
+});
+
+volumeControl.addEventListener("input",()=>{
+radio.volume=volumeControl.value;
+});
 </script>
 
 </body>
