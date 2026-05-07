@@ -7,7 +7,11 @@
 <title>RETRO TV 80s | Canal K-16</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
 :root{
 --pink:#ff00cc;
@@ -15,6 +19,10 @@
 --blue:#3333ff;
 --dark:#0a0a0f;
 --card:#111122;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
@@ -28,7 +36,7 @@ overflow-x:hidden;
 header{
 background:linear-gradient(135deg,#1a003a,#0a0a2a,#1a003a);
 border-bottom:2px solid var(--pink);
-padding:12px 20px;
+padding:12px 25px;
 display:flex;
 justify-content:space-between;
 align-items:center;
@@ -38,6 +46,7 @@ position:sticky;
 top:0;
 z-index:100;
 box-shadow:0 4px 30px rgba(255,0,204,.4);
+backdrop-filter:blur(12px);
 }
 
 .logo{
@@ -49,9 +58,14 @@ color:#fff;
 }
 
 .logo img{
-height:52px;
-border-radius:8px;
-box-shadow:0 0 12px var(--pink);
+height:58px;
+border-radius:10px;
+box-shadow:0 0 15px var(--pink);
+transition:.3s;
+}
+
+.logo img:hover{
+transform:scale(1.05);
 }
 
 .logo-text{
@@ -60,7 +74,7 @@ flex-direction:column;
 }
 
 .logo-title{
-font-size:20px;
+font-size:22px;
 font-weight:bold;
 background:linear-gradient(90deg,var(--pink),var(--cyan));
 -webkit-background-clip:text;
@@ -76,7 +90,7 @@ text-transform:uppercase;
 
 nav{
 display:flex;
-gap:6px;
+gap:8px;
 align-items:center;
 flex-wrap:wrap;
 }
@@ -84,15 +98,22 @@ flex-wrap:wrap;
 nav a{
 color:#ccc;
 text-decoration:none;
-padding:7px 14px;
+padding:8px 16px;
 border-radius:20px;
 font-size:13px;
 font-weight:bold;
+transition:.3s;
+}
+
+nav a:hover{
+background:rgba(255,255,255,.05);
+color:#fff;
 }
 
 nav a.active{
 color:var(--pink);
 border:1px solid var(--pink);
+box-shadow:0 0 12px rgba(255,0,204,.4);
 }
 
 .menu-toggle{
@@ -111,17 +132,18 @@ cursor:pointer;
 display:flex;
 align-items:center;
 gap:8px;
-padding:6px 10px;
+padding:8px 12px;
 border-radius:50px;
 background:rgba(0,0,0,.35);
 border:1px solid rgba(255,0,204,.4);
 backdrop-filter:blur(8px);
 margin-left:10px;
+box-shadow:0 0 20px rgba(255,0,204,.2);
 }
 
 .radio-mini-logo{
-width:30px;
-height:30px;
+width:32px;
+height:32px;
 border-radius:50%;
 box-shadow:0 0 10px var(--pink);
 }
@@ -130,21 +152,29 @@ box-shadow:0 0 10px var(--pink);
 font-size:10px;
 color:#ff3355;
 font-weight:bold;
+animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+0%{opacity:1}
+50%{opacity:.4}
+100%{opacity:1}
 }
 
 .mini-radio button{
-width:32px;
-height:32px;
+width:34px;
+height:34px;
 border:none;
 border-radius:50%;
 background:linear-gradient(135deg,var(--pink),var(--blue));
 color:#fff;
 font-size:14px;
 cursor:pointer;
+box-shadow:0 0 10px rgba(255,0,204,.5);
 }
 
 .mini-radio input[type=range]{
-width:70px;
+width:80px;
 accent-color:#ff00cc;
 cursor:pointer;
 }
@@ -152,11 +182,12 @@ cursor:pointer;
 /* SLIDER */
 .slider{
 width:100%;
-height:75vh;
-min-height:320px;
+height:82vh;
+min-height:420px;
 position:relative;
 overflow:hidden;
 background:#000;
+border-bottom:2px solid rgba(255,0,204,.4);
 }
 
 .slide{
@@ -168,35 +199,43 @@ inset:0;
 width:100%;
 height:100%;
 object-fit:cover;
+filter:brightness(.7);
 }
 
 /* APP */
 .app-section{
 background:linear-gradient(135deg,#0d001f,#1a003a,#0d001f);
-padding:24px 20px;
+padding:35px 20px;
 text-align:center;
 }
 
 .app-btn{
 display:inline-flex;
 align-items:center;
-gap:12px;
-padding:14px 30px;
+gap:14px;
+padding:16px 34px;
 background:linear-gradient(135deg,var(--pink),var(--blue));
 color:#fff;
-font-size:16px;
+font-size:17px;
 font-weight:bold;
 text-decoration:none;
-border-radius:50px;
-box-shadow:0 0 25px rgba(255,0,204,.6);
+border-radius:60px;
+box-shadow:0 0 30px rgba(255,0,204,.6);
+transition:.3s;
 }
 
-.app-btn img{width:28px}
+.app-btn:hover{
+transform:scale(1.05);
+}
+
+.app-btn img{
+width:30px;
+}
 
 /* SECTION */
 .section{
-padding:30px 20px;
-max-width:1400px;
+padding:45px 25px;
+max-width:1600px;
 margin:auto;
 }
 
@@ -204,9 +243,13 @@ margin:auto;
 display:flex;
 align-items:center;
 gap:12px;
-margin-bottom:20px;
+margin-bottom:25px;
 padding-bottom:12px;
 border-bottom:1px solid rgba(255,0,204,.3);
+}
+
+.section-header h2{
+font-size:28px;
 }
 
 .section-line{
@@ -218,77 +261,82 @@ background:linear-gradient(90deg,rgba(255,0,204,.5),transparent);
 /* QUICK LINKS */
 .quick-links{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-margin-bottom:30px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-bottom:45px;
 }
 
 .quick-card{
 display:flex;
 align-items:center;
-gap:15px;
+gap:18px;
 background:linear-gradient(135deg,var(--card),#1a1a2e);
 border:1px solid rgba(255,0,204,.2);
-border-radius:14px;
-padding:18px;
+border-radius:18px;
+padding:22px;
 text-decoration:none;
 color:#fff;
 transition:.3s;
+box-shadow:0 8px 30px rgba(0,0,0,.3);
 }
 
 .quick-card:hover{
-transform:translateY(-3px);
-box-shadow:0 8px 30px rgba(255,0,204,.35);
+transform:translateY(-5px) scale(1.02);
+box-shadow:0 12px 40px rgba(255,0,204,.35);
 }
 
 .qc-icon{
-font-size:32px;
-width:56px;
-height:56px;
+font-size:38px;
+width:68px;
+height:68px;
 display:flex;
 align-items:center;
 justify-content:center;
 background:rgba(255,255,255,.06);
-border-radius:12px;
+border-radius:14px;
 }
 
 .qc-text span{
 display:block;
 font-size:11px;
 color:#888;
-margin-bottom:3px;
+margin-bottom:5px;
 letter-spacing:1px;
 text-transform:uppercase;
 }
 
-.qc-text strong{font-size:16px}
+.qc-text strong{
+font-size:18px;
+}
 
 /* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-gap:16px;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:22px;
 }
 
 .card{
 background:linear-gradient(145deg,var(--card),#0d0d1e);
 border:1px solid rgba(255,0,204,.15);
-border-radius:14px;
+border-radius:18px;
 overflow:hidden;
 transition:.3s;
+box-shadow:0 10px 30px rgba(0,0,0,.35);
 }
 
 .card:hover{
-transform:translateY(-4px);
-box-shadow:0 10px 35px rgba(255,0,204,.25);
+transform:translateY(-6px);
+box-shadow:0 12px 45px rgba(255,0,204,.3);
 }
 
 /* PLAYER */
 .video-box{
 position:relative;
 width:100%;
-height:190px;
+height:230px;
 background:#000;
+overflow:hidden;
 }
 
 .video-box iframe{
@@ -301,17 +349,18 @@ border:none;
 position:absolute;
 left:10px;
 bottom:10px;
-width:46px;
+width:50px;
 z-index:5;
 opacity:.95;
+filter:drop-shadow(0 0 10px #ff00cc);
 }
 
 .clock{
 position:absolute;
 right:10px;
 bottom:10px;
-padding:5px 10px;
-border-radius:10px;
+padding:6px 12px;
+border-radius:12px;
 font-size:14px;
 font-weight:bold;
 color:#fff;
@@ -322,20 +371,21 @@ z-index:6;
 
 .card-fs-btn{
 position:absolute;
-top:8px;
-right:8px;
-background:rgba(0,0,0,.6);
+top:10px;
+right:10px;
+background:rgba(0,0,0,.65);
 border:1px solid rgba(255,0,204,.4);
 color:#fff;
 font-size:15px;
-padding:5px 9px;
-border-radius:8px;
+padding:7px 10px;
+border-radius:10px;
 cursor:pointer;
 z-index:10;
+backdrop-filter:blur(4px);
 }
 
 .card-info{
-padding:12px 14px;
+padding:15px;
 display:flex;
 align-items:center;
 gap:10px;
@@ -346,11 +396,11 @@ width:8px;
 height:8px;
 border-radius:50%;
 background:var(--pink);
-box-shadow:0 0 6px var(--pink);
+box-shadow:0 0 8px var(--pink);
 }
 
 .card-info p{
-font-size:13px;
+font-size:14px;
 color:#ccc;
 }
 
@@ -358,55 +408,148 @@ color:#ccc;
 footer{
 background:linear-gradient(135deg,#0d001f,#0a0a1a);
 border-top:2px solid rgba(255,0,204,.3);
-padding:30px 20px;
+padding:40px 20px;
 text-align:center;
+margin-top:40px;
 }
 
 .footer-logo{
-width:50px;
-border-radius:8px;
-margin-bottom:10px;
-box-shadow:0 0 12px var(--pink);
+width:60px;
+border-radius:10px;
+margin-bottom:12px;
+box-shadow:0 0 15px var(--pink);
 }
 
 .footer-links{
 display:flex;
 justify-content:center;
 flex-wrap:wrap;
-gap:12px;
-margin:12px 0;
+gap:14px;
+margin:16px 0;
 }
 
 .footer-links a{
 color:#888;
 text-decoration:none;
 font-size:13px;
+transition:.3s;
+}
+
+.footer-links a:hover{
+color:#fff;
 }
 
 .footer-copy{
 color:#555;
 font-size:12px;
-margin-top:8px;
+margin-top:10px;
+}
+
+/* DESKTOP MEJORADO */
+@media(min-width:1200px){
+
+.grid{
+grid-template-columns:repeat(4,1fr);
+}
+
+.video-box{
+height:250px;
+}
+
+.section{
+padding:55px 35px;
+}
+
+}
+
+/* TABLET */
+@media(max-width:900px){
+
+.slider{
+height:60vw;
+min-height:300px;
+}
+
+.grid{
+grid-template-columns:repeat(2,1fr);
+}
+
 }
 
 /* MOBILE */
 @media(max-width:768px){
-.menu-toggle{display:block}
-nav{display:none;width:100%;flex-direction:column}
-nav.open{display:flex}
-.slider{height:55vw;min-height:220px}
-.quick-links{grid-template-columns:1fr 1fr}
+
+.menu-toggle{
+display:block;
+}
+
+nav{
+display:none;
+width:100%;
+flex-direction:column;
+align-items:flex-start;
+padding-top:10px;
+}
+
+nav.open{
+display:flex;
+}
+
+.slider{
+height:55vw;
+min-height:220px;
+}
+
+.quick-links{
+grid-template-columns:1fr 1fr;
+}
 
 .mini-radio{
 width:100%;
 justify-content:center;
 margin-top:10px;
 }
+
+.section-header h2{
+font-size:22px;
 }
 
+.video-box{
+height:220px;
+}
+
+}
+
+/* CELULAR */
 @media(max-width:480px){
-.quick-links{grid-template-columns:1fr}
-.grid{grid-template-columns:1fr}
+
+.quick-links{
+grid-template-columns:1fr;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.video-box{
+height:210px;
+}
+
+.logo-title{
+font-size:18px;
+}
+
+.logo img{
+height:50px;
+}
+
+.app-btn{
+font-size:14px;
+padding:14px 20px;
+width:100%;
+justify-content:center;
+}
+
 }
 </style>
 </head>
@@ -414,8 +557,10 @@ margin-top:10px;
 <body>
 
 <header>
+
 <a href="index.html" class="logo">
 <img src="https://i.postimg.cc/MpDP7ck7/e93c6cdb1ad95aaed45c286435cd75ef.png">
+
 <div class="logo-text">
 <span class="logo-title">Canal K-16</span>
 <span class="logo-sub">Plataforma Multimedia</span>
@@ -425,13 +570,22 @@ margin-top:10px;
 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
 <nav id="menu">
+
 <a href="index.html" class="active">Inicio</a>
-<a href="https://canalk16limavida.wixsite.com/my-site" target="_blank">Plataforma K-16</a>
+
+<a href="https://canalk16limavida.wixsite.com/my-site" target="_blank">
+Plataforma K-16
+</a>
+
 <a href="cine.html">🎬 Películas</a>
-<a href="https://radio-k-16.es.tl/" target="_blank">📻 Radio K-16</a>
+
+<a href="https://radio-k-16.es.tl/" target="_blank">
+📻 Radio K-16
+</a>
+
 <a href="Canales.html">📺 TV en Vivo</a>
 
-<!-- REPRODUCTOR RADIO -->
+<!-- RADIO -->
 <div class="mini-radio">
 
 <img src="https://i.postimg.cc/MpDP7ck7/e93c6cdb1ad95aaed45c286435cd75ef.png" class="radio-mini-logo">
@@ -458,21 +612,31 @@ value="0.8"
 </nav>
 </header>
 
+<!-- VIDEO PRINCIPAL -->
 <div class="slider">
 <div class="slide">
+
 <video muted autoplay loop playsinline>
 <source src="https://www.solobailalo.cl/wp-content/uploads/2021/10/Video-Solo-Bailalo2.mp4">
 </video>
+
 </div>
 </div>
 
+<!-- APP -->
 <div class="app-section">
+
 <a href="https://www.appcreator24.com/app3658156-oak8rj" target="_blank" class="app-btn">
+
 <img src="https://i.postimg.cc/MpDP7ck7/e93c6cdb1ad95aaed45c286435cd75ef.png">
+
 📲 DESCARGAR APP OFICIAL CANAL K-16
+
 </a>
+
 </div>
 
+<!-- CONTENIDO -->
 <div class="section">
 
 <div class="section-header">
@@ -484,26 +648,34 @@ value="0.8"
 
 <a href="Canales.html" class="quick-card">
 <div class="qc-icon">📺</div>
+
 <div class="qc-text">
 <span>Streaming en vivo</span>
 <strong>TV en Vivo</strong>
 </div>
+
 </a>
 
 <a href="cine.html" class="quick-card">
+
 <div class="qc-icon">🎬</div>
+
 <div class="qc-text">
 <span>Películas y series</span>
 <strong>Sala de Cine</strong>
 </div>
+
 </a>
 
 <a href="https://radio-k-16.es.tl/" target="_blank" class="quick-card">
+
 <div class="qc-icon">📻</div>
+
 <div class="qc-text">
 <span>Audio en vivo</span>
 <strong>Radio K-16</strong>
 </div>
+
 </a>
 
 </div>
@@ -515,91 +687,181 @@ value="0.8"
 
 <div class="grid">
 
+<!-- VIDEO 1 -->
 <div class="card">
+
 <div class="video-box">
-<button class="card-fs-btn" onclick="cardFullscreen(this)">⛶</button>
+
+<button class="card-fs-btn" onclick="cardFullscreen(this)">
+⛶
+</button>
+
 <iframe src="https://ok.ru/videoembed/8165128276594?nochat=1" allowfullscreen></iframe>
+
 <img class="video-logo" src="https://i.postimg.cc/MpDP7ck7/e93c6cdb1ad95aaed45c286435cd75ef.png">
+
 <div class="clock"></div>
-</div>
-<div class="card-info"><div class="card-dot"></div><p>VIDEO Canal K-16</p></div>
+
 </div>
 
+<div class="card-info">
+<div class="card-dot"></div>
+<p>VIDEO Canal K-16</p>
+</div>
+
+</div>
+
+<!-- VIDEO 2 -->
 <div class="card">
+
 <div class="video-box">
-<button class="card-fs-btn" onclick="cardFullscreen(this)">⛶</button>
+
+<button class="card-fs-btn" onclick="cardFullscreen(this)">
+⛶
+</button>
+
 <iframe src="https://ok.ru/videoembed/8186458999410?nochat=1" allowfullscreen></iframe>
+
 <img class="video-logo" src="https://i.postimg.cc/MpDP7ck7/e93c6cdb1ad95aaed45c286435cd75ef.png">
+
 <div class="clock"></div>
-</div>
-<div class="card-info"><div class="card-dot"></div><p>VIDEO Canal K-16</p></div>
+
 </div>
 
+<div class="card-info">
+<div class="card-dot"></div>
+<p>VIDEO Canal K-16</p>
+</div>
+
+</div>
+
+<!-- VIDEO 3 -->
 <div class="card">
+
 <div class="video-box">
-<button class="card-fs-btn" onclick="cardFullscreen(this)">⛶</button>
+
+<button class="card-fs-btn" onclick="cardFullscreen(this)">
+⛶
+</button>
+
 <iframe src="https://ok.ru/videoembed/8223566924402?nochat=1" allowfullscreen></iframe>
+
 <img class="video-logo" src="https://i.postimg.cc/MpDP7ck7/e93c6cdb1ad95aaed45c286435cd75ef.png">
+
 <div class="clock"></div>
-</div>
-<div class="card-info"><div class="card-dot"></div><p>VIDEO Canal K-16</p></div>
+
 </div>
 
+<div class="card-info">
+<div class="card-dot"></div>
+<p>VIDEO Canal K-16</p>
+</div>
+
+</div>
+
+<!-- VIDEO 4 -->
 <div class="card">
+
 <div class="video-box">
-<button class="card-fs-btn" onclick="cardFullscreen(this)">⛶</button>
+
+<button class="card-fs-btn" onclick="cardFullscreen(this)">
+⛶
+</button>
+
 <iframe src="https://ok.ru/videoembed/10577792928370?nochat=1" allowfullscreen></iframe>
+
 <img class="video-logo" src="https://i.postimg.cc/MpDP7ck7/e93c6cdb1ad95aaed45c286435cd75ef.png">
+
 <div class="clock"></div>
+
 </div>
-<div class="card-info"><div class="card-dot"></div><p>CONCIERTO K-16</p></div>
+
+<div class="card-info">
+<div class="card-dot"></div>
+<p>CONCIERTO K-16</p>
+</div>
+
 </div>
 
 </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
+
 <img class="footer-logo" src="https://i.postimg.cc/MpDP7ck7/e93c6cdb1ad95aaed45c286435cd75ef.png">
 
 <div class="footer-links">
+
 <a href="index.html">Inicio</a>
+
 <a href="Canales.html">TV en Vivo</a>
+
 <a href="cine.html">Cine</a>
-<a href="https://radio-k-16.es.tl/" target="_blank">Radio</a>
-<a href="https://canalk16limavida.wixsite.com/my-site" target="_blank">Plataforma K-16</a>
+
+<a href="https://radio-k-16.es.tl/" target="_blank">
+Radio
+</a>
+
+<a href="https://canalk16limavida.wixsite.com/my-site" target="_blank">
+Plataforma K-16
+</a>
+
 </div>
 
-<p class="footer-copy">© 2026 RETRO TV 80s · Canal K-16 · Plataforma Multimedia</p>
+<p class="footer-copy">
+© 2026 RETRO TV 80s · Canal K-16 · Plataforma Multimedia
+</p>
+
 </footer>
 
 <script>
+
 function toggleMenu(){
 document.getElementById('menu').classList.toggle('open');
 }
 
+/* PANTALLA COMPLETA */
 function cardFullscreen(btn){
+
 const box=btn.closest('.video-box');
+
 if(!document.fullscreenElement){
+
 box.requestFullscreen();
+
 }else{
+
 document.exitFullscreen();
-}
+
 }
 
+}
+
+/* RELOJ */
 function updateClock(){
+
 const now=new Date();
+
 const h=String(now.getHours()).padStart(2,'0');
+
 const m=String(now.getMinutes()).padStart(2,'0');
+
 const txt=h+":"+m;
+
 document.querySelectorAll('.clock').forEach(el=>el.textContent=txt);
+
 }
 
 setInterval(updateClock,1000);
+
 updateClock();
 
-/* RADIO RETRO */
+/* RADIO */
 const radio=document.getElementById("retroRadio");
+
 const playBtn=document.getElementById("radioPlay");
+
 const volumeControl=document.getElementById("radioVolume");
 
 radio.volume=0.8;
@@ -607,18 +869,27 @@ radio.volume=0.8;
 playBtn.addEventListener("click",()=>{
 
 if(radio.paused){
+
 radio.play();
+
 playBtn.innerHTML="❚❚";
+
 }else{
+
 radio.pause();
+
 playBtn.innerHTML="▶";
+
 }
 
 });
 
 volumeControl.addEventListener("input",()=>{
+
 radio.volume=volumeControl.value;
+
 });
+
 </script>
 
 </body>
