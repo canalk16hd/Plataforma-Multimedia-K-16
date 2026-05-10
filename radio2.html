@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RADIO K-16 | RETRO LIVE EXPERIENCE</title>   
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+:root{
+--pink:#ff00cc;
+--cyan:#00ffff;
+--blue:#4d4dff;
+--dark:#050510;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Orbitron',sans-serif;
+background:#050510;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* FONDO */
+
+body::before{
+
+content:'';
+
+position:fixed;
+
+width:100%;
+height:100%;
+
+top:0;
+left:0;
+
+background:
+radial-gradient(circle at top left,#ff00cc25 0%,transparent 35%),
+radial-gradient(circle at bottom right,#00ffff20 0%,transparent 35%),
+linear-gradient(#050510,#090916);
+
+z-index:-3;
+
+}
+
+/* ESTRELLAS */
+
+.stars{
+
+position:fixed;
+
+width:100%;
+height:100%;
+
+background:url('https://www.transparenttextures.com/patterns/stardust.png');
+
+opacity:.25;
+
+z-index:-2;
+
+animation:starsMove 90s linear infinite;
+
+}
+
+@keyframes starsMove{
+
+from{
+transform:translateY(0);
+}
+
+to{
+transform:translateY(-1200px);
+}
+
+}
+
+/* HEADER */
+
+header{
+
+padding:80px 20px;
+
+text-align:center;
+
+position:relative;
+
+background:
+linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.85)),
+url('https://plain-enam-prod-public.komododecks.com/202605/10/KJ4ltwGHB8LlmLi0ukPA/image.gif');
+
+background-size:cover;
+background-position:center;
+
+border-bottom:2px solid rgba(255,0,204,.3);
+
+}
+
+.logo{
+
+width:170px;
+
+border-radius:30px;
+
+margin-bottom:25px;
+
+box-shadow:
+0 0 30px rgba(0,255,255,.5);
+
+animation:float 4s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-10px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+
+header h1{
+
+font-size:72px;
+
+margin-bottom:15px;
+
+background:
+linear-gradient(90deg,var(--pink),var(--cyan));
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+header p{
+
+font-size:18px;
+
+letter-spacing:4px;
+
+color:#ddd;
+
+}
+
+/* VOLVER */
+
+.back-home{
+
+position:sticky;
+top:0;
+
+z-index:999;
+
+background:rgba(0,0,0,.75);
+
+backdrop-filter:blur(15px);
+
+padding:15px;
+
+text-align:center;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.back-home a{
+
+display:inline-block;
+
+padding:12px 25px;
+
+border-radius:40px;
+
+background:
+linear-gradient(135deg,var(--pink),var(--blue));
+
+color:#fff;
+
+text-decoration:none;
+
+font-size:14px;
+
+font-weight:bold;
+
+box-shadow:
+0 0 20px rgba(255,0,204,.4);
+
+transition:.3s;
+
+}
+
+.back-home a:hover{
+
+transform:scale(1.05);
+
+}
+
+/* HERO */
+
+.hero{
+
+padding:60px 25px;
+
+text-align:center;
+
+max-width:1200px;
+
+margin:auto;
+
+}
+
+.hero h2{
+
+font-size:50px;
+
+margin-bottom:25px;
+
+color:var(--cyan);
+
+}
+
+.hero p{
+
+font-size:18px;
+
+line-height:1.8;
+
+color:#ccc;
+
+}
+
+/* LIVE BAR */
+
+.live-bar{
+
+margin:20px auto 60px;
+
+max-width:1450px;
+
+padding:16px;
+
+border-radius:25px;
+
+background:
+linear-gradient(90deg,var(--pink),var(--cyan));
+
+box-shadow:
+0 0 25px rgba(255,0,204,.4);
+
+}
+
+.live-bar marquee{
+
+font-size:25px;
+
+font-weight:bold;
+
+color:#000;
+
+}
+
+/* TV */
+
+.live-section{
+
+padding:20px 20px 70px;
+
+}
+
+.live-title{
+
+text-align:center;
+
+margin-bottom:35px;
+
+}
+
+.live-title h2{
+
+font-size:52px;
+
+color:#ffe600;
+
+text-shadow:
+0 0 15px rgba(255,230,0,.5);
+
+}
+
+.tv-app{
+
+max-width:1000px;
+
+margin:auto;
+
+background:
+linear-gradient(145deg,#101020,#090916);
+
+border-radius:30px;
+
+overflow:hidden;
+
+border:1px solid rgba(255,255,255,.08);
+
+box-shadow:
+0 0 40px rgba(0,255,255,.12);
+
+}
+
+.tv-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:20px;
+
+background:rgba(255,255,255,.03);
+
+flex-wrap:wrap;
+
+gap:10px;
+
+}
+
+.live-badge{
+
+background:red;
+
+padding:7px 14px;
+
+border-radius:30px;
+
+font-size:13px;
+
+font-weight:bold;
+
+animation:pulse 1s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.08);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+.tv-title{
+
+font-size:18px;
+
+font-weight:bold;
+
+}
+
+/* VIDEO */
+
+.video-container{
+
+position:relative;
+
+width:100%;
+
+padding-top:56.25%;
+
+background:#000;
+
+overflow:hidden;
+
+}
+
+.video-container iframe{
+
+position:absolute;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+border:none;
+
+}
+
+/* CONTROLES */
+
+.controls{
+
+padding:20px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:25px;
+
+flex-wrap:wrap;
+
+background:rgba(255,255,255,.03);
+
+}
+
+.controls button{
+
+width:65px;
+height:65px;
+
+border-radius:50%;
+
+border:none;
+
+font-size:22px;
+
+cursor:pointer;
+
+background:
+linear-gradient(135deg,var(--pink),var(--blue));
+
+color:#fff;
+
+box-shadow:
+0 0 20px rgba(255,0,204,.5);
+
+transition:.3s;
+
+}
+
+.controls button:hover{
+
+transform:scale(1.1);
+
+}
+
+/* CARD INFO */
+
+.card-info{
+
+padding:25px;
+
+text-align:center;
+
+}
+
+.card-info h3{
+
+font-size:30px;
+
+margin-bottom:10px;
+
+color:var(--cyan);
+
+}
+
+.card-info p{
+
+color:#bbb;
+
+font-size:16px;
+
+line-height:1.7;
+
+}
+
+/* RADIOS */
+
+.radio-section{
+
+padding:40px 20px 90px;
+
+}
+
+.radio-title{
+
+text-align:center;
+
+margin-bottom:45px;
+
+}
+
+.radio-title img{
+
+width:160px;
+
+margin-bottom:20px;
+
+filter:drop-shadow(0 0 20px rgba(255,0,204,.6));
+
+}
+
+.radio-title h2{
+
+font-size:58px;
+
+background:
+linear-gradient(90deg,var(--pink),var(--cyan));
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+/* GRID */
+
+.radio-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(340px,1fr));
+
+gap:35px;
+
+max-width:1500px;
+
+margin:auto;
+
+}
+
+/* CARD */
+
+.radio-card{
+
+background:
+linear-gradient(145deg,#111122,#090916);
+
+border-radius:30px;
+
+padding:20px;
+
+border:1px solid rgba(255,255,255,.08);
+
+transition:.4s;
+
+box-shadow:
+0 10px 35px rgba(0,0,0,.5);
+
+overflow:hidden;
+
+}
+
+.radio-card:hover{
+
+transform:
+translateY(-8px)
+scale(1.02);
+
+box-shadow:
+0 0 30px rgba(255,0,204,.4);
+
+}
+
+.radio-card h3{
+
+text-align:center;
+
+font-size:25px;
+
+margin-bottom:15px;
+
+color:#ffe600;
+
+}
+
+.radio-card img{
+
+width:100%;
+height:180px;
+object-fit:cover;
+
+border-radius:20px;
+
+margin-bottom:15px;
+
+}
+
+/* NUEVO REPRODUCTOR MODERNO */
+
+.plyr{
+border-radius:18px;
+overflow:hidden;
+margin-top:10px;
+box-shadow:0 0 20px rgba(0,255,255,.15);
+}
+
+.plyr--audio{
+background:linear-gradient(145deg,#16162b,#0a0a14);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.plyr__controls{
+background:transparent !important;
+color:#fff;
+}
+
+.plyr--full-ui input[type=range]{
+color:var(--pink);
+}
+
+.plyr__control--overlaid{
+background:var(--pink);
+}
+
+/* OYENTES */
+
+.listeners{
+
+margin-top:12px;
+
+padding:12px;
+
+border-radius:14px;
+
+background:rgba(255,255,255,.05);
+
+text-align:center;
+
+font-size:14px;
+
+color:#00ffff;
+
+border:1px solid rgba(0,255,255,.2);
+
+}
+
+/* FOOTER */
+
+footer{
+
+padding:70px 20px;
+
+text-align:center;
+
+background:#020208;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+footer img{
+
+width:220px;
+
+border-radius:20px;
+
+margin-bottom:25px;
+
+}
+
+footer p{
+
+font-size:13px;
+
+letter-spacing:3px;
+
+color:#777;
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+header h1{
+font-size:46px;
+}
+
+.hero h2{
+font-size:35px;
+}
+
+.live-title h2{
+font-size:38px;
+}
+
+.radio-title h2{
+font-size:38px;
+}
+
+.radio-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:600px){
+
+header{
+padding:55px 15px;
+}
+
+.logo{
+width:130px;
+}
+
+header h1{
+font-size:32px;
+}
+
+header p{
+font-size:12px;
+letter-spacing:2px;
+}
+
+.hero{
+padding:45px 18px;
+}
+
+.hero h2{
+font-size:28px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+.live-bar marquee{
+font-size:17px;
+}
+
+.controls{
+gap:15px;
+}
+
+.controls button{
+width:55px;
+height:55px;
+}
+
+.radio-card{
+padding:18px;
+}
+
+.radio-card h3{
+font-size:22px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<header>
+
+<img class="logo"
+src="https://i.postimg.cc/MpDP7ck7/e93c6cdb1ad95aaed45c286435cd75ef.png">
+
+<h1>RADIO K-16</h1>
+
+<p>RETRO LIVE EXPERIENCE • STREAMING • CHILE</p>
+
+</header>
+
+<div class="back-home">
+
+<a href="index.html">
+⬅ VOLVER AL INICIO
+</a>
+
+</div>
+
+<section class="hero">
+
+<h2>La Nueva Experiencia Multimedia K-16</h2>
+
+<p>
+
+Escucha nuestras estaciones online y disfruta la transmisión
+en vivo de Canal K-16 con una experiencia visual retro futurista.
+
+</p>
+
+</section>
+
+<div class="live-bar">
+
+<marquee>
+
+🎵 RADIO K-16 • RETRO TV • STREAMING EN VIVO • ROCK • TROPICAL • ROMÁNTICA • VIDEOS RETRO • CANAL K-16 🎵
+
+</marquee>
+
+</div>
+
+<!-- TV -->
+
+<section class="live-section">
+
+<div class="live-title">
+
+<h2>📺 CANAL K 16 EN VIVO</h2>
+
+</div>
+
+<div class="tv-app">
+
+<div class="tv-header">
+
+<span>EN VIVO</span>
+
+<span class="live-badge">
+● Canal K-16 HD
+</span>
+
+<span class="tv-title">
+Streaming HD
+</span>
+
+</div>
+
+<div class="video-container" id="videoBox">
+
+<iframe
+id="player"
+src="https://ok.ru/videoembed/8752678379122?nochat=1&autoplay=1"
+allow="autoplay"
+allowfullscreen>
+</iframe>
+
+</div>
+
+<div class="controls">
+
+<button onclick="reloadVideo()">▶</button>
+
+<button onclick="fullscreenVideo()">⛶</button>
+
+</div>
+
+<div class="card-info">
+
+<h3>Canal K-16</h3>
+
+<p>
+
+Transmisión multimedia online las 24 horas.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- RADIOS -->
+
+<section class="radio-section">
+
+<div class="radio-title">
+
+<img src="https://www.appcreator24.com/srv/imgs/gen/3658156_fondo.png?ts=1778362640" style="max-width:400px;max-height:200px;">
+
+<h2>📻 ESTACIONES K-16</h2>
+
+</div>
+
+<div class="radio-grid">
+
+<!-- RADIO 1 -->
+
+<div class="radio-card">
+
+<h3>Radio K-16 Limavida</h3>
+
+<img src="https://www.appcreator24.com/srv/imgs/gen/3658156_fondo.png?ts=1778362640" style="max-width:400px;max-height:200px;">
+
+<audio class="audio-player" controls>
+<source src="https://stream.zeno.fm/py88zcm0vwzuv" type="audio/mpeg">
+</audio>
+
+<div class="listeners">
+👥 Oyentes en vivo: <span id="listeners1">128</span>
+</div>
+
+</div>
+
+<!-- RADIO 2 -->
+
+<div class="radio-card">
+
+<h3>Radio K-16 Música Variada</h3>
+
+<img src="https://plain-enam-prod-public.komododecks.com/202605/09/MqgRqHty48ztqTaGTIKA/image.gif">
+
+<audio class="audio-player" controls>
+<source src="https://stream.zeno.fm/4n1v68p9vnhvv" type="audio/mpeg">
+</audio>
+
+<div class="listeners">
+👥 Oyentes en vivo: <span id="listeners2">94</span>
+</div>
+
+</div>
+
+<!-- RADIO 3 -->
+
+<div class="radio-card">
+
+<h3>Radio K-16 Rock Latino</h3>
+
+<img src="https://plain-enam-prod-public.komododecks.com/202605/09/YRepUny09llvaQwLd5RC/image.png"> 
+
+
+<audio class="audio-player" controls>
+<source src="https://stream.zeno.fm/1b0hr47nhxhvv" type="audio/mpeg">
+</audio>
+
+<div class="listeners">
+👥 Oyentes en vivo: <span id="listeners3">203</span>
+</div>
+
+</div>
+
+<!-- RADIO 4 -->
+
+<div class="radio-card">
+
+<h3>Radio K-16 Romatica</h3>
+
+<img src="https://plain-enam-prod-public.komododecks.com/202605/09/2hPVtuPByDLy8B7gCd7b/image.png"max-width:400px;max-height:200px;">
+
+
+<audio class="audio-player" controls>
+<source src="https://stream.zeno.fm/fqzyfsqcaxhvv" type="audio/mpeg">
+</audio>
+
+<div class="listeners">
+👥 Oyentes en vivo: <span id="listeners4">178</span>
+</div>
+
+</div>
+
+<!-- RADIO 5 -->
+
+<div class="radio-card">
+
+<h3>Radio K-16 Rock</h3>
+
+<img src="https://plain-enam-prod-public.komododecks.com/202605/09/iLwXiXxNpY1ubA1gACAF/image.gif"
+
+
+<audio class="audio-player" controls>
+<source src="https://stream.zeno.fm/m7gydancnxhvv" type="audio/mpeg">
+</audio>
+
+<div class="listeners">
+👥 Oyentes en vivo: <span id="listeners5">96</span>
+</div>
+
+</div>
+
+<!-- RADIO 6 -->
+
+<div class="radio-card">
+
+<h3>Radio K-16 Tropical</h3>
+
+<img src="https://plain-enam-prod-public.komododecks.com/202605/09/qIJ1mdMMnMIDky3yuUmp/image.jpg">
+
+<audio class="audio-player" controls>
+<source src="https://stream.zeno.fm/31wrqt00aphvv" type="audio/mpeg">
+</audio>
+
+<div class="listeners">
+👥 Oyentes en vivo: <span id="listeners6">231</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<img src="https://img.webme.com/pic/r/radio-k-16/marca-registrada.jpg">
+
+<p>
+
+© 2025 RADIO K-16 • STREAMING MULTIMEDIA • MARCA REGISTRADA
+
+</p>
+
+</footer>
+
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+
+<script>
+
+function reloadVideo(){
+
+const iframe=document.getElementById("player");
+
+iframe.src=iframe.src;
+
+}
+
+function fullscreenVideo(){
+
+const elem=document.getElementById("videoBox");
+
+if(elem.requestFullscreen){
+
+elem.requestFullscreen();
+
+}else if(elem.webkitRequestFullscreen){
+
+elem.webkitRequestFullscreen();
+
+}
+
+}
+
+/* REPRODUCTORES MODERNOS */
+
+const players = Array.from(document.querySelectorAll('.audio-player')).map(p => new Plyr(p, {
+controls: [
+'play-large',
+'play',
+'progress',
+'current-time',
+'mute',
+'volume'
+]
+}));
+
+/* CONTADORES */
+
+function randomListeners(id,min,max){
+
+setInterval(()=>{
+
+document.getElementById(id).innerText=
+Math.floor(Math.random()*(max-min+1))+min;
+
+},5000);
+
+}
+
+randomListeners("listeners1",120,180);
+randomListeners("listeners2",80,140);
+randomListeners("listeners3",150,250);
+randomListeners("listeners4",100,220);
+randomListeners("listeners5",90,170);
+randomListeners("listeners6",140,260);
+
+</script>
+
+</body>
+</html>
