@@ -11,292 +11,337 @@
 <!-- HLS -->
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
-<!-- PLAYER MODERNO -->
+<!-- PLAYER -->
 <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css"/>
 <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
 
 <style>
 
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 :root{
-  --pink:#ff00cc;
-  --cyan:#00ffff;
-  --blue:#3333ff;
-  --dark:#07091a;
-  --card:#0d1226;
-  --accent:#00b7ff;
+--pink:#ff00cc;
+--cyan:#00ffff;
+--blue:#3333ff;
+--dark:#07091a;
+--card:#0d1226;
+--accent:#00b7ff;
 }
 
 body{
-  font-family:Arial,sans-serif;
-  background:var(--dark);
-  color:#fff;
-  min-height:100vh;
-  overflow-x:hidden;
+font-family:Arial,sans-serif;
+background:var(--dark);
+color:#fff;
+min-height:100vh;
+overflow-x:hidden;
 }
 
 /* HEADER */
 
 header{
-  background:linear-gradient(135deg,#1a003a,#0a0a2a,#1a003a);
-  border-bottom:2px solid var(--pink);
-  padding:10px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  gap:10px;
-  position:sticky;
-  top:0;
-  z-index:999;
-  box-shadow:0 4px 30px rgba(255,0,204,.4);
+background:linear-gradient(135deg,#1a003a,#0a0a2a,#1a003a);
+border-bottom:2px solid var(--pink);
+padding:8px 14px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:8px;
+position:sticky;
+top:0;
+z-index:999;
+box-shadow:0 4px 30px rgba(255,0,204,.4);
 }
 
 .logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  text-decoration:none;
-  color:#fff;
+display:flex;
+align-items:center;
+gap:8px;
+text-decoration:none;
+color:#fff;
 }
 
 .logo img{
-  height:44px;
-  border-radius:8px;
-  box-shadow:0 0 10px var(--pink);
+height:38px;
+border-radius:8px;
+box-shadow:0 0 10px var(--pink);
 }
 
 .logo-text{
-  display:flex;
-  flex-direction:column;
+display:flex;
+flex-direction:column;
 }
 
 .logo-title{
-  font-size:18px;
-  font-weight:bold;
-  background:linear-gradient(90deg,var(--pink),var(--cyan));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+font-size:16px;
+font-weight:bold;
+background:linear-gradient(90deg,var(--pink),var(--cyan));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .logo-sub{
-  font-size:10px;
-  color:#888;
-  letter-spacing:2px;
-  text-transform:uppercase;
+font-size:9px;
+color:#888;
+letter-spacing:2px;
+text-transform:uppercase;
 }
 
 .live-badge{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  background:rgba(255,0,0,.15);
-  border:1px solid rgba(255,60,60,.5);
-  border-radius:20px;
-  padding:5px 14px;
-  font-size:13px;
-  font-weight:bold;
-  color:#ff4444;
+display:flex;
+align-items:center;
+gap:6px;
+background:rgba(255,0,0,.15);
+border:1px solid rgba(255,60,60,.5);
+border-radius:20px;
+padding:4px 10px;
+font-size:11px;
+font-weight:bold;
+color:#ff4444;
 }
 
 .live-dot{
-  width:8px;
-  height:8px;
-  background:#ff4444;
-  border-radius:50%;
-  box-shadow:0 0 8px #ff4444;
-  animation:pulse 1s infinite;
+width:7px;
+height:7px;
+background:#ff4444;
+border-radius:50%;
+box-shadow:0 0 8px #ff4444;
+animation:pulse 1s infinite;
 }
 
 @keyframes pulse{
-  0%,100%{opacity:1;transform:scale(1)}
-  50%{opacity:.4;transform:scale(1.3)}
+0%,100%{
+opacity:1;
+transform:scale(1);
+}
+50%{
+opacity:.4;
+transform:scale(1.3);
+}
 }
 
+/* MENU */
+
 nav{
-  display:flex;
-  gap:5px;
+display:flex;
+gap:5px;
+flex-wrap:wrap;
+align-items:center;
 }
 
 nav a{
-  color:#ccc;
-  text-decoration:none;
-  padding:6px 12px;
-  border-radius:18px;
-  font-size:13px;
-  font-weight:bold;
-  transition:.3s;
+color:#ccc;
+text-decoration:none;
+padding:5px 10px;
+border-radius:18px;
+font-size:12px;
+font-weight:bold;
+transition:.3s;
 }
 
 nav a:hover{
-  color:#fff;
-  border:1px solid var(--pink);
-  background:rgba(255,0,204,.1);
+color:#fff;
+border:1px solid var(--pink);
+background:rgba(255,0,204,.1);
 }
 
 nav a.active{
-  color:var(--accent);
-  border:1px solid var(--accent);
-  background:rgba(0,183,255,.1);
+color:var(--accent);
+border:1px solid var(--accent);
+background:rgba(0,183,255,.1);
+}
+
+/* BOTON MENU MAS CHICO */
+
+.menu-mini{
+padding:4px 9px !important;
+font-size:11px !important;
+border-radius:14px !important;
 }
 
 /* APP */
 
 .app{
-  max-width:1300px;
-  margin:auto;
-  padding:20px;
+max-width:1300px;
+margin:auto;
+padding:14px;
 }
 
 /* PLAYER */
 
 .player-section{
-  background:linear-gradient(145deg,#0d1226,#09111f);
-  border-radius:18px;
-  padding:16px;
-  margin-bottom:24px;
-  border:1px solid rgba(0,183,255,.2);
-  box-shadow:0 10px 50px rgba(0,0,0,.6);
+background:linear-gradient(145deg,#0d1226,#09111f);
+border-radius:16px;
+padding:12px;
+margin-bottom:20px;
+border:1px solid rgba(0,183,255,.2);
+box-shadow:0 10px 50px rgba(0,0,0,.6);
 }
 
 .now-playing{
-  margin-bottom:12px;
+margin-bottom:10px;
 }
 
 .now-playing small{
-  color:#777;
-  display:block;
-  margin-bottom:4px;
-  letter-spacing:2px;
+color:#777;
+display:block;
+margin-bottom:3px;
+letter-spacing:2px;
+font-size:10px;
 }
 
 #nowTitle{
-  font-size:18px;
-  font-weight:bold;
+font-size:15px;
+font-weight:bold;
 }
 
 .player-box{
-  width:100%;
-  aspect-ratio:16/9;
-  background:#000;
-  border-radius:14px;
-  overflow:hidden;
+width:100%;
+aspect-ratio:16/9;
+background:#000;
+border-radius:12px;
+overflow:hidden;
 }
-
-/* PLAYER MODERNO */
 
 .player-box video,
 .player-box iframe{
-  width:100%;
-  height:100%;
-  display:block;
-  border:none;
+width:100%;
+height:100%;
+display:block;
+border:none;
 }
 
 .plyr{
-  width:100%;
-  height:100%;
+width:100%;
+height:100%;
 }
 
 .plyr--video{
-  background:#000!important;
+background:#000!important;
 }
 
 .plyr__controls{
-  background:linear-gradient(to top,rgba(0,0,0,.9),rgba(0,0,0,.2))!important;
+background:linear-gradient(to top,rgba(0,0,0,.9),rgba(0,0,0,.2))!important;
 }
 
 .plyr__control{
-  color:#fff!important;
+color:#fff!important;
 }
 
 .plyr__control:hover{
-  background:var(--accent)!important;
+background:var(--accent)!important;
 }
 
 .plyr__control--overlaid{
-  background:var(--accent)!important;
+background:var(--accent)!important;
 }
 
 .plyr--full-ui input[type=range]{
-  color:var(--accent)!important;
+color:var(--accent)!important;
 }
 
 /* FILTROS */
 
 .filters{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-bottom:20px;
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-bottom:18px;
 }
 
 .filter-btn{
-  padding:8px 16px;
-  border:none;
-  border-radius:20px;
-  background:#10182f;
-  color:#fff;
-  cursor:pointer;
-  transition:.2s;
+padding:7px 14px;
+border:none;
+border-radius:20px;
+background:#10182f;
+color:#fff;
+cursor:pointer;
+transition:.2s;
+font-size:12px;
 }
 
 .filter-btn:hover{
-  background:var(--accent);
+background:var(--accent);
 }
 
 /* CANALES */
 
 .lista{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
-  gap:12px;
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(105px,1fr));
+gap:10px;
 }
 
 .canal{
-  background:#10182f;
-  border-radius:12px;
-  overflow:hidden;
-  cursor:pointer;
-  transition:.2s;
-  border:1px solid rgba(255,255,255,.08);
+background:#10182f;
+border-radius:12px;
+overflow:hidden;
+cursor:pointer;
+transition:.2s;
+border:1px solid rgba(255,255,255,.08);
 }
 
 .canal:hover{
-  transform:translateY(-4px);
-  border-color:var(--accent);
+transform:translateY(-4px);
+border-color:var(--accent);
 }
 
 .canal img{
-  width:100%;
-  height:70px;
-  object-fit:cover;
+width:100%;
+height:60px;
+object-fit:cover;
 }
 
 .canal-name{
-  padding:8px;
-  font-size:12px;
-  text-align:center;
+padding:7px;
+font-size:11px;
+text-align:center;
 }
 
 .canal.activo{
-  border-color:var(--accent);
-  box-shadow:0 0 18px rgba(0,183,255,.4);
+border-color:var(--accent);
+box-shadow:0 0 18px rgba(0,183,255,.4);
 }
 
 footer{
-  background:#0b1020;
-  border-top:1px solid rgba(255,0,204,.2);
-  padding:20px;
-  text-align:center;
-  color:#555;
-  font-size:12px;
-  margin-top:30px;
+background:#0b1020;
+border-top:1px solid rgba(255,0,204,.2);
+padding:18px;
+text-align:center;
+color:#555;
+font-size:11px;
+margin-top:25px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:700px){
+
+header{
+justify-content:center;
+text-align:center;
+}
+
+nav{
+justify-content:center;
+}
+
+.logo{
+justify-content:center;
+}
+
+.lista{
+grid-template-columns:repeat(3,1fr);
+}
+
+.canal img{
+height:52px;
+}
+
 }
 
 </style>
@@ -306,52 +351,54 @@ footer{
 
 <header>
 
-  <a href="#" class="logo">
+<a href="#" class="logo">
 
-    <img src="https://i.postimg.cc/TP81RyJR/Logo-Canal-1.png">
+<img src="https://i.postimg.cc/TP81RyJR/Logo-Canal-1.png">
 
-    <div class="logo-text">
-      <span class="logo-title">Canal K-16</span>
-      <span class="logo-sub">TV EN VIVO</span>
-    </div>
+<div class="logo-text">
+<span class="logo-title">Canal K-16</span>
+<span class="logo-sub">TV EN VIVO</span>
+</div>
 
-  </a>
+</a>
 
-  <div class="live-badge">
-    <span class="live-dot"></span>
-    EN VIVO
-  </div>
+<div class="live-badge">
+<span class="live-dot"></span>
+EN VIVO
+</div>
 
-  <nav>
-    <a href="#" class="active">📺 TV</a>
-    <a href="#">🎬 Cine</a>
-    <a href="#">📻 Radio</a>
-  </nav>
+<nav>
+
+<a href="Canales.html" class">📺 TV</a>
+
+<a href="cine.html">🎬 Cine</a>
+
+<a href="radio2.html#">📻 Radio</a>
+
+<a href="index.html" class="menu-mini">
+⬅ Menú
+</a>
+
+</nav>
 
 </header>
 
 <div class="app">
 
-  <!-- PLAYER -->
+<div class="player-section">
 
-  <div class="player-section">
+<div class="now-playing">
+<small>REPRODUCIENDO</small>
+<div id="nowTitle">Canal K-16</div>
+</div>
 
-    <div class="now-playing">
-      <small>REPRODUCIENDO</small>
-      <div id="nowTitle">Canal K-16</div>
-    </div>
+<div class="player-box" id="playerBox"></div>
 
-    <div class="player-box" id="playerBox"></div>
+</div>
 
-  </div>
+<div class="filters" id="filters"></div>
 
-  <!-- FILTROS -->
-
-  <div class="filters" id="filters"></div>
-
-  <!-- CANALES -->
-
-  <div class="lista" id="lista"></div>
+<div class="lista" id="lista"></div>
 
 </div>
 
@@ -363,152 +410,150 @@ footer{
 
 const canales = [
 
-  { n:"Canal K16 HD", u:"https://ok.ru/videoembed/8752678379122?nochat=1&autoplay=1", l:"https://i.postimg.cc/TP81RyJR/Logo-Canal-1.png", cat:"K-16" },
+{ n:"Canal K16 HD", u:"https://ok.ru/videoembed/8752678379122?nochat=1&autoplay=1", l:"https://i.postimg.cc/TP81RyJR/Logo-Canal-1.png", cat:"K-16" },
 
-  { n:"24 Horas", u:"https://mdstrm.com/live-stream-playlist/689ba606ecfe7915e1f8f741.m3u8?PlaylistM3UCL", l:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/24_Horas_TVN_logo.png/1920px-24_Horas_TVN_logo.png", cat:"Chile" },
+{ n:"24 Horas", u:"https://mdstrm.com/live-stream-playlist/689ba606ecfe7915e1f8f741.m3u8?PlaylistM3UCL", l:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/24_Horas_TVN_logo.png/1920px-24_Horas_TVN_logo.png", cat:"Chile" },
 
-  { n:"MEGA", u:"https://unlimited2-cl-isp.dps.live/mega/mega.smil/playlist.m3u8", l:"https://cdn.m3u.cl/logo/455_Mega.png", cat:"Chile" },
+{ n:"MEGA", u:"https://unlimited2-cl-isp.dps.live/mega/mega.smil/playlist.m3u8", l:"https://cdn.m3u.cl/logo/455_Mega.png", cat:"Chile" },
 
-  { n:"CHV", u:"https://jireh-15-hls-video-cl-isp.dps.live/hls-video/339f69c6122f6d8f4574732c235f09b7683e31a5/chvn/chvn.smil/chvn/livestream2/chunks.m3u8", l:"https://cdn.m3u.cl/logo/1153_CHV.png", cat:"Chile" },
+{ n:"CHV", u:"https://jireh-15-hls-video-cl-isp.dps.live/hls-video/339f69c6122f6d8f4574732c235f09b7683e31a5/chvn/chvn.smil/chvn/livestream2/chunks.m3u8", l:"https://cdn.m3u.cl/logo/1153_CHV.png", cat:"Chile" },
 
-  { n:"T13", u:"https://redirector.rudo.video/hls-video/10b92cafdf3646cbc1e727f3dc76863621a327fd/t13/t13.smil/playlist.m3u8", l:"https://cdn.m3u.cl/logo/1054_T13.png", cat:"Chile" },
+{ n:"T13", u:"https://redirector.rudo.video/hls-video/10b92cafdf3646cbc1e727f3dc76863621a327fd/t13/t13.smil/playlist.m3u8", l:"https://cdn.m3u.cl/logo/1054_T13.png", cat:"Chile" },
 
-  { n:"MEMORIAS SERIES", u:"https://video.xtrematv.com:3633/live/memoriasserieslive.m3u8", l:"https://memorias.tv/wp-content/uploads/2024/11/logo-MEMORIAS-SERIES-png-.png", cat:"Retro" },
+{ n:"MEMORIAS SERIES", u:"https://video.xtrematv.com:3633/live/memoriasserieslive.m3u8", l:"https://memorias.tv/wp-content/uploads/2024/11/logo-MEMORIAS-SERIES-png-.png", cat:"Retro" },
 
-  { n:"Máss Música", u:"https://stmv3.voxtvhd.com.br/masmusik/masmusik/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/4-2.jpg", cat:"Música" },
+{ n:"Máss Música", u:"https://stmv3.voxtvhd.com.br/masmusik/masmusik/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/4-2.jpg", cat:"Música" },
 
-  { n:"Groove Top Hits", u:"https://stmv6.voxtvhd.com.br/spectratophits/spectratophits/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2026/03/2.jpg", cat:"Música" },
+{ n:"Groove Top Hits", u:"https://stmv6.voxtvhd.com.br/spectratophits/spectratophits/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2026/03/2.jpg", cat:"Música" },
 
-  { n:"Totalmusic", u:"https://cdn.global.elektamedia.com/live/c7eds/Totalmusic/SA_LIVE_hls_enc/tracks-v1a1/mono.ts.m3u8", l:"https://static.elektamedia.com/ch/tmc_main.png", cat:"Música" },
+{ n:"Totalmusic", u:"https://cdn.global.elektamedia.com/live/c7eds/Totalmusic/SA_LIVE_hls_enc/tracks-v1a1/mono.ts.m3u8", l:"https://static.elektamedia.com/ch/tmc_main.png", cat:"Música" },
 
-  { n:"Teleclásica", u:"https://stmv7.voxtvhd.com.br/teleclasica/teleclasica/playlist.m3u8", l:"https://www.cxtv.com.br/img/Tvs/Logo/webp-m/8d518c7a8b190f28137df6e531fe842e.webp", cat:"Retro" },
+{ n:"Teleclásica", u:"https://stmv7.voxtvhd.com.br/teleclasica/teleclasica/playlist.m3u8", l:"https://www.cxtv.com.br/img/Tvs/Logo/webp-m/8d518c7a8b190f28137df6e531fe842e.webp", cat:"Retro" },
 
-  { n:"Retro Plus TV", u:"https://tls-cl.cdnz.cl/retroplustvuno/live/playlist.m3u8", l:"https://cdn.m3u.cl/logo/4_Retro_Plus_TV.png", cat:"Retro" },
+{ n:"Retro Plus TV", u:"https://tls-cl.cdnz.cl/retroplustvuno/live/playlist.m3u8", l:"https://cdn.m3u.cl/logo/4_Retro_Plus_TV.png", cat:"Retro" },
 
-  { n:"Retro Plus S2", u:"https://tls-cl.cdnz.cl/retroplustvdos/live/playlist.m3u8", l:"https://cdn.m3u.cl/logo/5_Retro_Plus_TV_Senal_2.png", cat:"Retro" },
+{ n:"Retro Plus S2", u:"https://tls-cl.cdnz.cl/retroplustvdos/live/playlist.m3u8", l:"https://cdn.m3u.cl/logo/5_Retro_Plus_TV_Senal_2.png", cat:"Retro" },
+{ n:"Retro Plus S3", u:"https://tls-cl.cdnz.cl/retroplustvtres/live/playlist.m3u8", l:"https://cdn.m3u.cl/logo/465_Retro_Plus_TV_Senal_3.png", cat:"Retro" },
 
-  { n:"Retro Plus S3", u:"https://tls-cl.cdnz.cl/retroplustvtres/live/playlist.m3u8", l:"https://cdn.m3u.cl/logo/465_Retro_Plus_TV_Senal_3.png", cat:"Retro" },
+{ n:"Zoom Back TV", u:"https://multicontenidos.cl/wp-content/uploads/2024/06/Zoom-Back.mp4", l:"https://multicontenidos.cl/wp-content/uploads/2024/06/zoomback-300x300.png", cat:"Retro" },
 
-  { n:"Zoom Back TV", u:"https://multicontenidos.cl/wp-content/uploads/2024/06/Zoom-Back.mp4", l:"https://multicontenidos.cl/wp-content/uploads/2024/06/zoomback-300x300.png", cat:"Retro" },
+{ n:"Rock TV", u:"https://tv.broadcasting.ro/rocktv/85c83a80-4f71-4f2d-a8d6-43f676896bcb_output_0.m3u8", l:"https://i.imgur.com/VB88A5V.png", cat:"Música" },
 
-  { n:"Rock TV", u:"https://tv.broadcasting.ro/rocktv/85c83a80-4f71-4f2d-a8d6-43f676896bcb_output_0.m3u8", l:"https://i.imgur.com/VB88A5V.png", cat:"Música" },
+{ n:"Vevo Latino", u:"https://amg00056-amg00056c13-rakuten-es-3246.playouts.now.amagi.tv/360p/index.m3u8", l:"https://cdn.tvivu.com/logos/vevo-latino-us-160.webp", cat:"Música" },
 
-  { n:"Vevo Latino", u:"https://amg00056-amg00056c13-rakuten-es-3246.playouts.now.amagi.tv/360p/index.m3u8", l:"https://cdn.tvivu.com/logos/vevo-latino-us-160.webp", cat:"Música" },
+{ n:"XITE Celebrates", u:"https://dt1s4l2cmiyit.cloudfront.net/360p-vtt/index.m3u8", l:"https://i.imgur.com/coSrUwV.png", cat:"Música" },
 
-  { n:"XITE Celebrates", u:"https://dt1s4l2cmiyit.cloudfront.net/360p-vtt/index.m3u8", l:"https://i.imgur.com/coSrUwV.png", cat:"Música" },
+{ n:"XITE Nuevo Latino", u:"https://d3bsgqzbpkrvbb.cloudfront.net/360p-vtt/index.m3u8", l:"https://i.imgur.com/2qyl2y3.png", cat:"Música" },
 
-  { n:"XITE Nuevo Latino", u:"https://d3bsgqzbpkrvbb.cloudfront.net/360p-vtt/index.m3u8", l:"https://i.imgur.com/2qyl2y3.png", cat:"Música" },
+{ n:"XITE Siempre Latino", u:"https://d1xc25jm9e0l4b.cloudfront.net/360p-vtt/index.m3u8", l:"https://cdn.tvivu.com/logos/xite-siempre-latino-us-160.webp", cat:"Música" },
 
-  { n:"XITE Siempre Latino", u:"https://d1xc25jm9e0l4b.cloudfront.net/360p-vtt/index.m3u8", l:"https://cdn.tvivu.com/logos/xite-siempre-latino-us-160.webp", cat:"Música" },
+{ n:"Cine Acción", u:"https://stmv6.voxtvhd.com.br/cineaccion/cineaccion/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/14.jpg", cat:"Cine" },
 
-  { n:"Cine Acción", u:"https://stmv6.voxtvhd.com.br/cineaccion/cineaccion/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/14.jpg", cat:"Cine" },
+{ n:"MV Familiar", u:"https://stmv6.voxtvhd.com.br/cinefamiliy/cinefamiliy/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/19.jpg", cat:"Cine" },
 
-  { n:"MV Familiar", u:"https://stmv6.voxtvhd.com.br/cinefamiliy/cinefamiliy/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/19.jpg", cat:"Cine" },
+{ n:"ENT Family", u:"https://cdn.global.elektamedia.com/live/c7eds/ENT_Family/SA_LIVE_hls_enc/tracks-v1a1/mono.ts.m3u8", l:"https://static.elektamedia.com/ch/entf.png", cat:"Cine" },
 
-  { n:"ENT Family", u:"https://cdn.global.elektamedia.com/live/c7eds/ENT_Family/SA_LIVE_hls_enc/tracks-v1a1/mono.ts.m3u8", l:"https://static.elektamedia.com/ch/entf.png", cat:"Cine" },
+{ n:"MV Suspenso", u:"https://stmv6.voxtvhd.com.br/cinesuspenso/cinesuspenso/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/19.jpg", cat:"Cine" },
 
-  { n:"MV Suspenso", u:"https://stmv6.voxtvhd.com.br/cinesuspenso/cinesuspenso/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/19.jpg", cat:"Cine" },
+{ n:"Mega Cine", u:"https://stmv2.voxtvhd.com.br/xphereone/xphereone/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/28.jpg", cat:"Cine" },
 
-  { n:"Mega Cine", u:"https://stmv2.voxtvhd.com.br/xphereone/xphereone/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/28.jpg", cat:"Cine" },
+{ n:"Xphere One", u:"https://stmv2.voxtvhd.com.br/xpherewild/xpherewild/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/29.jpg", cat:"Cine" },
 
-  { n:"Xphere One", u:"https://stmv2.voxtvhd.com.br/xpherewild/xpherewild/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/29.jpg", cat:"Cine" },
+{ n:"MV Series", u:"https://stmv7.voxtvhd.com.br/xtremaseries/xtremaseries/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/11.jpg", cat:"Cine" },
 
-  { n:"MV Series", u:"https://stmv7.voxtvhd.com.br/xtremaseries/xtremaseries/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/11.jpg", cat:"Cine" },
+{ n:"Retro Series", u:"https://stmv7.voxtvhd.com.br/xtremaretroseries/xtremaretroseries/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/12.jpg", cat:"Cine" },
 
-  { n:"Retro Series", u:"https://stmv7.voxtvhd.com.br/xtremaretroseries/xtremaretroseries/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/12.jpg", cat:"Cine" },
+{ n:"Vox Latino", u:"https://stmv6.voxtvhd.com.br/cinelatino/cinelatino/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/24.jpg", cat:"Cine" },
 
-  { n:"Vox Latino", u:"https://stmv6.voxtvhd.com.br/cinelatino/cinelatino/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/24.jpg", cat:"Cine" },
+{ n:"MV Retro", u:"https://stmv3.voxtvhd.com.br/xtremaretrocartoons/xtremaretrocartoons/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/7.jpg", cat:"Infantil" },
 
-  { n:"MV Retro", u:"https://stmv3.voxtvhd.com.br/xtremaretrocartoons/xtremaretrocartoons/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/7.jpg", cat:"Infantil" },
+{ n:"MV Cartoon", u:"https://stmv6.voxtvhd.com.br/xtremacartoons/xtremacartoons/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/6.jpg", cat:"Infantil" },
 
-  { n:"MV Cartoon", u:"https://stmv6.voxtvhd.com.br/xtremacartoons/xtremacartoons/playlist.m3u8", l:"https://xtrematv.com/wp-content/uploads/2025/12/6.jpg", cat:"Infantil" },
+{ n:"Mx Prime", u:"https://multicontenidos.cl/wp-content/uploads/2024/10/mxclas.mp4", l:"https://multicontenidos.cl/wp-content/uploads/2024/06/mxprime-150x150.png", cat:"Varios" },
 
-  { n:"Mx Prime", u:"https://multicontenidos.cl/wp-content/uploads/2024/10/mxclas.mp4", l:"https://multicontenidos.cl/wp-content/uploads/2024/06/mxprime-150x150.png", cat:"Varios" },
-
-  { n:"Portal Fox Mix", u:"https://panel.tvstream.cl:1936/8040/8040/playlist.m3u8", l:"https://www.portalfoxmix.cl/web/wp-content/uploads/2016/03/logoPFM.png", cat:"Varios" }
+{ n:"Portal Fox Mix", u:"https://panel.tvstream.cl:1936/8040/8040/playlist.m3u8", l:"https://www.portalfoxmix.cl/web/wp-content/uploads/2016/03/logoPFM.png", cat:"Varios" }
 
 ];
 
 /* SISTEMA */
 
-const playerBox = document.getElementById('playerBox');
-const lista = document.getElementById('lista');
-const filtersBox = document.getElementById('filters');
-const nowTitle = document.getElementById('nowTitle');
+const playerBox=document.getElementById('playerBox');
+const lista=document.getElementById('lista');
+const filtersBox=document.getElementById('filters');
+const nowTitle=document.getElementById('nowTitle');
 
 let hls;
 let activeDiv;
-let currentCat = 'Todos';
+let currentCat='Todos';
 
-/* CATEGORÍAS */
+/* CATEGORIAS */
 
 function renderCategorias(){
 
-  const cats = ['Todos', ...new Set(canales.map(c => c.cat))];
+const cats=['Todos',...new Set(canales.map(c=>c.cat))];
 
-  filtersBox.innerHTML = '';
+filtersBox.innerHTML='';
 
-  cats.forEach(cat => {
+cats.forEach(cat=>{
 
-    const btn = document.createElement('button');
+const btn=document.createElement('button');
 
-    btn.className = 'filter-btn';
-    btn.textContent = cat;
+btn.className='filter-btn';
 
-    btn.onclick = () => {
+btn.textContent=cat;
 
-      currentCat = cat;
+btn.onclick=()=>{
 
-      renderCanales();
+currentCat=cat;
 
-    };
+renderCanales();
 
-    filtersBox.appendChild(btn);
+};
 
-  });
+filtersBox.appendChild(btn);
+
+});
 
 }
 
-/* RENDER */
-
 function renderCanales(){
 
-  lista.innerHTML = '';
+lista.innerHTML='';
 
-  const filtered = currentCat === 'Todos'
-    ? canales
-    : canales.filter(c => c.cat === currentCat);
+const filtered=currentCat==='Todos'
+?canales
+:canales.filter(c=>c.cat===currentCat);
 
-  filtered.forEach(c => {
+filtered.forEach(c=>{
 
-    const div = document.createElement('div');
+const div=document.createElement('div');
 
-    div.className = 'canal';
+div.className='canal';
 
-    div.innerHTML = `
-      <img src="${c.l}">
-      <div class="canal-name">${c.n}</div>
-    `;
+div.innerHTML=`
+<img src="${c.l}">
+<div class="canal-name">${c.n}</div>
+`;
 
-    div.onclick = () => {
+div.onclick=()=>{
 
-      if(activeDiv){
-        activeDiv.classList.remove('activo');
-      }
+if(activeDiv){
+activeDiv.classList.remove('activo');
+}
 
-      div.classList.add('activo');
+div.classList.add('activo');
 
-      activeDiv = div;
+activeDiv=div;
 
-      nowTitle.textContent = c.n;
+nowTitle.textContent=c.n;
 
-      play(c.u);
+play(c.u);
 
-    };
+};
 
-    lista.appendChild(div);
+lista.appendChild(div);
 
-  });
+});
 
 }
 
@@ -516,98 +561,90 @@ function renderCanales(){
 
 function play(url){
 
-  if(hls){
-    hls.destroy();
-    hls = null;
-  }
+if(hls){
+hls.destroy();
+hls=null;
+}
 
-  playerBox.innerHTML = '';
+playerBox.innerHTML='';
 
-  if(url.includes('.m3u8')){
+if(url.includes('.m3u8')){
 
-    const video = document.createElement('video');
+const video=document.createElement('video');
 
-    video.controls = true;
-    video.autoplay = true;
-    video.playsInline = true;
+video.controls=true;
+video.autoplay=true;
+video.playsInline=true;
 
-    playerBox.appendChild(video);
+playerBox.appendChild(video);
 
-    new Plyr(video,{
-      controls:[
-        'play-large',
-        'play',
-        'progress',
-        'current-time',
-        'mute',
-        'volume',
-        'settings',
-        'pip',
-        'fullscreen'
-      ]
-    });
+new Plyr(video,{
+controls:[
+'play-large',
+'play',
+'progress',
+'current-time',
+'mute',
+'volume',
+'settings',
+'pip',
+'fullscreen'
+]
+});
 
-    if(Hls.isSupported()){
+if(Hls.isSupported()){
 
-      hls = new Hls();
+hls=new Hls();
 
-      hls.loadSource(url);
+hls.loadSource(url);
 
-      hls.attachMedia(video);
+hls.attachMedia(video);
 
-    }else{
+}else{
 
-      video.src = url;
-
-    }
-
-  }
-
-  else if(url.includes('.mp4')){
-
-    const video = document.createElement('video');
-
-    video.src = url;
-
-    video.controls = true;
-
-    playerBox.appendChild(video);
-
-    new Plyr(video);
-
-  }
-
-  else{
-
-    playerBox.innerHTML = `
-      <iframe
-        src="${url}"
-        allowfullscreen
-        allow="autoplay">
-      </iframe>
-    `;
-
-  }
+video.src=url;
 
 }
 
-/* INICIO */
+}else if(url.includes('.mp4')){
+
+const video=document.createElement('video');
+
+video.src=url;
+
+video.controls=true;
+
+playerBox.appendChild(video);
+
+new Plyr(video);
+
+}else{
+
+playerBox.innerHTML=`
+<iframe
+src="${url}"
+allowfullscreen
+allow="autoplay">
+</iframe>
+`;
+
+}
+
+}
 
 renderCategorias();
 
 renderCanales();
 
-/* AUTO PLAY PRIMER CANAL */
+setTimeout(()=>{
 
-setTimeout(() => {
+const first=document.querySelector('.canal');
 
-  const first = document.querySelector('.canal');
+if(first){
+first.click();
+}
 
-  if(first){
-    first.click();
-  }
-
-}, 500);
+},500);
 
 </script>
 </body>
